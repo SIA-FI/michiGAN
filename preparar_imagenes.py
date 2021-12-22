@@ -16,7 +16,12 @@ for carpeta in carpetas:
         for archivo in os.listdir(url_carpeta_origen):
             img = cv2.imread(os.path.join(url_carpeta_origen,archivo))
             img = img[:,:,:3]
-            res = cv2.resize(img, dsize=(128, 128), interpolation=cv2.INTER_CUBIC)
+            # Se redimensiona
+            redim = cv2.resize(img, dsize=(128, 128), interpolation=cv2.INTER_CUBIC)
+            # Para blanco y negro	
+            gray = cv2.cvtColor(redim, cv2.COLOR_BGR2GRAY)  
+            # escala de grises 3 canales
+            res = np.stack([ gray for x in range(3) ], axis=2)
             nombre = archivo.split(".")[0]
             nombre = nombre+".png"
             cv2.imwrite(os.path.join(url_carpeta_destino,nombre), res)
