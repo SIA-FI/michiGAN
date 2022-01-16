@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="SIAFI">
+    <!--link rel="icon" href="../../../../favicon.ico"-->
+
+    <title>MichiGAN</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<style>
+			@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+			.introduccion p{
+				font-family: 'Open Sans', cursive;
+				color: rgb(110, 0, 0);
+			}
+			.red{
+				background-color: rgb(255, 56, 106);
+				color: black;
+			}
+			.my-personalizado{
+				margin-top: 12px;
+			}
+			.centrar-vertical{
+				display: flex; 
+				flex-direction: column; 
+				justify-content: space-between;
+				align-items: center;
+			}
+			.centrar-vertical-space{
+				display: flex; 
+				flex-direction: column; 
+				justify-content: space-around;
+				align-items: center;
+			}
+			.rosa-siafi{
+				background-color: pink;
+			}
+			.imagenes-principio{
+				width: 100%; 
+				height: auto;
+			}
+			.resultado{
+				width: 50%; 
+				height: auto;
+			}
+			.palanca{
+				width: 50%; 
+				height: auto;
+			}
+		</style>
+	</head>
+<body>
+	<div class="container pt-3">
+		<!-- Primera parte de la pantalla -->
+		<!-- Portada -->
+		<div class="row d-flex justify-content-between px-2">
+			<div class="col-12 col-lg-2 my-2 d-flex align-items-center rosa-siafi">
+				<img class="imagenes-principio" src="../static/img/logoMichiGAN.png">
+			</div>
+			<div class="col-12 col-lg-9 my-2 p-0 d-flex align-items-center rosa-siafi">
+					<img class="imagenes-principio" src="../static/img/banner.jpg"> 
+			</div>
+		</div>
+		<!-- Creditos y explicación -->
+		<div class="row d-flex justify-content-between px-2">
+			<div class="col-12 col-lg-2 my-2 p-3 rosa-siafi">
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">Garcia Mejia Luis Leobardo</li>
+					<li class="list-group-item">Garcia Olvera Emiliano</li>
+					<li class="list-group-item">Vázquez Uriostegui Jonathan Yair</li>
+					<li class="list-group-item">Lázaro Martínez Abraham Josué</li>
+					<li class="list-group-item">Link a Github</li>
+				</ul>
+			</div>
+			<div class="col-12 col-lg-9 my-2 p-4 introduccion d-flex align-items-center rosa-siafi">
+				<p class="text-justify">MichiGAN es un proyecto de SIAFI, el cual busca utilizar inteligencia artificial, específicamente un tipo especial de redes neuronales denominadas GANs, para crear un generador de ilustraciones de gatos.
+					La idea de una GAN puede ser vista de una manera simple
+					Hacer que redes neuronales compitan una con otra con la finalidad de que mejoren. Así una GAN está compuesta de dos redes neuronales:
+					<br>
+					El <b>generador</b> el cual toma una distribución aleatoria como entrada (normalmente gaussiana) y tiene por salida alguna clase de datos, típicamente imágenes. Se puede pensar en estas entradas aleatorias como códigos de la imagen a generar, y de esta forma podemos decir que el generador ofrece una funcionalidad de decodificador.
+					<br>
+					El discriminador el cual toma las imágenes falsas del generador o imágenes reales de nuestro dataset y esta debe averiguar si la imagen de entrada es una real o falsa.
+					<br>
+					Al ser puesto el generador y discriminador juntos, se puede empezar este juego donde nuestro generador tratará de crear imágenes convincentes en la forma de ilustraciones de gatos y el discriminador tendrá que descubrir si las reales son las del discriminador o las de nuestro dataset. Conforme realizamos entrenamiento ambas redes mejoraran poco a poco y el juego terminará cuando el generador logre finalmente engañar al discriminador.
+					En este punto solo queda alimentar al generador con ruido y podremos generar nuestras propias ilustraciones de gatos.
+				</p>
+			</div>
+		</div>
+
+		<!-- Segunda parte de la pantalla -->
+		<div class="row px-2">
+			<!-- Primer Columna -->
+			<div class="col-2 my-2 p-2 rosa-siafi">
+				<div class="row d-flex justify-content-center m-2 h-100">
+					<div class="centrar-vertical-space">
+						<button type="button " class="btn btn-lg red m-2">GENERAR</button>
+						
+						<div class="row d-flex justify-content-center m-2 mb-3">
+							<div class="col-12 form-check">
+								<input class="form-check-input" type="checkbox" name="gridRadios" id="gridRadios1" value="option1">
+								<label class="form-check-label" for="gridRadios1">
+									Pusheen
+								</label>
+							</div>
+							<div class="col-12 form-check">
+								<input class="form-check-input" type="checkbox" name="gridRadios" id="gridRadios2" value="option2">
+								<label class="form-check-label" for="gridRadios2">
+									Bugcat
+								</label>
+							</div>
+							<div class="col-12 form-check disabled">
+								<input class="form-check-input" type="checkbox" name="gridRadios" id="gridRadios3" value="option3">
+								<label class="form-check-label" for="gridRadios3">
+									Anime
+								</label>
+							</div>
+							<div class="col-12 form-check disabled">
+								<input class="form-check-input" type="checkbox" name="gridRadios" id="gridRadios3" value="option3">
+								<label class="form-check-label" for="gridRadios3">
+									Hello Kitty
+								</label>
+							</div>
+							<div class="col-12 form-check disabled">
+								<input class="form-check-input" type="checkbox" name="gridRadios" id="gridRadios3" value="option3">
+								<label class="form-check-label" for="gridRadios3">
+									Kawaii
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Segunda Columna -->
+			<div class="col-8 my-2 p-2 rosa-siafi">
+				<div class="row my-personalizado m-2 mt-3">
+					<div class="col-2 p-0">
+						<input type="number" class="form-control">
+					</div>
+					<div class="col-2 p-0">
+						<input type="number" class="form-control">
+					</div>
+					<div class="col-2 p-0">
+						<input type="number" class="form-control">
+					</div>
+					<div class="col-2 p-0">
+						<input type="number" class="form-control">
+					</div>
+					<div class="col-2 p-0">
+						<input type="number" class="form-control">
+					</div>
+					<div class="col-2 p-0">
+						<input type="number" class="form-control">
+					</div>
+				</div>
+
+				<div class="row d-flex justify-content-center m-2">
+					<img class="resultado" src="../static/img/logoMichiGAN.png">
+				</div>
+			</div>
+			<!-- Tercera Columna -->
+			<div class="col-2 my-2 p-2 rosa-siafi">
+				<div class="row d-flex justify-content-center m-2 h-100">
+					<div class="centrar-vertical-space">
+						<img class="palanca" src="../static/img/Palanca1.png">
+						<button type="button" class="btn btn-lg red m-2">GUARDAR</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Tercera parte de la pantalla -->
+		<div class="row px-2">
+			<!-- Primer Columna -->
+			<div class="col-9 my-2 p-2 rosa-siafi">
+				<div class="row m-2 mt-3">
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" id="customFileLang" lang="es">
+						<label class="custom-file-label" for="customFileLang">Subir imagen</label>
+					</div>
+				</div>
+				<div class="row d-flex justify-content-center m-2">
+					<img class="resultado" src="../static/img/logoMichiGAN.png">
+				</div>
+			</div>
+			<!-- Segunda Columna -->
+			<div class="col-3 my-2 p-2 rosa-siafi">
+				<div class="row d-flex justify-content-center m-2 h-100">
+					<div class="centrar-vertical">
+						<button type="button" class="btn btn-lg red m-2">GENERAR</button>
+						<button type="button" class="btn btn-lg red m-2">GUARDAR</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+
+
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
