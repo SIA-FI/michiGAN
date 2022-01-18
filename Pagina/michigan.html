@@ -38,15 +38,15 @@
 				</ul>
 			</div>
 			<div class="col-12 col-lg-9 my-2 p-4 introduccion d-flex align-items-center rosa-siafi">
-				<p class="text-justify">MichiGAN es un proyecto de SIAFI, el cual busca utilizar inteligencia artificial, específicamente un tipo especial de redes neuronales denominadas GANs, para crear un generador de ilustraciones de gatos.
+				<p class="text-justify">MichiGAN es un proyecto de SIAFI, el cual busca utilizar inteligencia artificial, específicamente un tipo especial de redes neuronales denominadas <b>GANs</b>, para crear un generador de ilustraciones de gatos.
 					La idea de una GAN puede ser vista de una manera simple
-					Hacer que redes neuronales compitan una con otra con la finalidad de que mejoren. Así una GAN está compuesta de dos redes neuronales:
+					Hacer que redes neuronales compitan una con otra con la finalidad de que mejoren mutuamente. Así una GAN está compuesta de dos redes neuronales:
 					<br>
-					El <b>generador</b> el cual toma una distribución aleatoria como entrada (normalmente gaussiana) y tiene por salida alguna clase de datos, típicamente imágenes. Se puede pensar en estas entradas aleatorias como códigos de la imagen a generar, y de esta forma podemos decir que el generador ofrece una funcionalidad de decodificador.
+					El <b>generador</b> el cual toma una distribución aleatoria como entrada (normalmente gaussiana) y tiene por salida alguna clase de datos, típicamente imágenes. Se puede pensar en estas entradas aleatorias como <i>códigos</i> de la imagen a generar, y de esta forma podemos decir que el generador ofrece una funcionalidad de <i>decodificador</i>.
 					<br>
-					El discriminador el cual toma las imágenes falsas del generador o imágenes reales de nuestro dataset y esta debe averiguar si la imagen de entrada es una real o falsa.
+					El <b>discriminador</b> el cual toma las imágenes falsas del generador o imágenes reales de nuestro dataset y esta debe averiguar si la imagen de entrada es una real o falsa.
 					<br>
-					Al ser puesto el generador y discriminador juntos, se puede empezar este juego donde nuestro generador tratará de crear imágenes convincentes en la forma de ilustraciones de gatos y el discriminador tendrá que descubrir si las reales son las del discriminador o las de nuestro dataset. Conforme realizamos entrenamiento ambas redes mejoraran poco a poco y el juego terminará cuando el generador logre finalmente engañar al discriminador.
+					Al ser puesto el <i>generador</i> y <i>discriminador</i> juntos, se puede empezar este <i>juego</i> donde nuestro generador tratará de crear imágenes convincentes en la forma de ilustraciones de gatos y el discriminador tendrá que descubrir si las reales son las del discriminador o las de nuestro dataset. Conforme realizamos entrenamiento ambas redes mejoraran mutuamente y el juego terminará cuando el generador logre finalmente <i>engañar</i> al discriminador.
 					En este punto solo queda alimentar al generador con ruido y podremos generar nuestras propias ilustraciones de gatos.
 				</p>
 			</div>
