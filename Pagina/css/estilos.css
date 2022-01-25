@@ -37,3 +37,13 @@
 	width: 50%; 
 	height: auto;
 }
+
+body {
+	background-image: url("../img/fondo.jpg");
+	background-repeat: repeat;
+}
+
+.borde-siafi{
+	border: 5px solid rgb(155, 31, 52) !important; 
+	box-shadow: 5px 5px 10px black;
+}

@@ -26,24 +26,33 @@ let opciones_generacion = [
 const archivo_input = $("#input_pix2pix");
 const imagen_salida = $("#output_pix2pix");
 
-let model;
+let model_varios;
+let model_pix2pix;
 let reader;
 let tensor_input_pix2pix;
 let vector_input_varios;
 
 $(document).ready(function(){
 	
-	cargar_modelo();
+	$("#cargar_bugcat").on("click", function(){
+		cargar_modelo_bugcat();
+	});
+
+	$("#cargar_pix2pix").on("click", function(){
+		cargar_modelo_pix2pix();
+	});
 
 	$("#palanca").on("click", function(){
-		vector_input_varios = asyncCall();
+		asyncCall();
+		vector_input_varios = generar_aleatorios();
+		console.log(vector_input_varios);
 	});
 
 	$("#generar_varios").on("click",function(){
 		if (typeof vector_input_varios === 'undefined') {
 			vector_input_varios = generar_aleatorios();
 		}
-		vector_input_varios = one_hot().concat(vector_input_varios, axis=1);
+		//let vector_input_varios_ = one_hot().concat(vector_input_varios, axis=1);
 		predecir_varios(vector_input_varios);
 	});
 
@@ -102,7 +111,7 @@ function obtener_numeros(){
 	val_casillas.forEach(function(elemento){
 		numeros.push(parseFloat(elemento.val()));
 	});
-
+	
 	return tf.tensor([numeros]);	
 }
 
@@ -151,27 +160,66 @@ function one_hot(){
 function predecir_varios(vector_input){
 	varios_generado = true;
 	alert("generando gatito");
+	
+	let resultado = model_varios.predict(vector_input);
+	resultado = resultado.reshape([128,128,3]);
+	resultado = tf.add(resultado,1);
+	resultado = resultado.div(2);
+
+	const myCanvas = $("#canva_varios");
+	tf.browser.toPixels(resultado, myCanvas[0]).then(() => {
+		resultado.dispose();
+	});
 }
 
 function predecir_pix2pix(vector_input){
 	pix2pix_generado = true;
 	alert("generando gatito pix2pix");
+
+	let resultado = model_pix2pix.predict(vector_input);
+	resultado = resultado.reshape([128,128,3]);
+	resultado = tf.add(resultado,1);
+	resultado = resultado.div(2);
+
+	const myCanvas = $("#canva_pix2pix");
+	tf.browser.toPixels(resultado, myCanvas[0]).then(() => {
+		resultado.dispose();
+	});
+	return resultado;
 }
 
 // Función para cargar el modelo
-async function cargar_modelo(){
-	model = await tf.loadLayersModel(
-		'https://storage.googleapis.com/tfjs-models/tfjs/iris_v1/model.json');
-	//model.summary();
-	//model =  await tf.loadLayersModel('https://hkinsley.com/static/tfjsmodel/model.json');
-	//const modelo_varios = await tf.loadLayersModel('localstorage://cambiar esta ruta');
-	//const modelo_pix2pix = await tf.loadLayersModel('localstorage://cambiar esta ruta');
-	/*
-	const uploadJSONInput = document.getElementById('upload-json');
-	const uploadWeightsInput = document.getElementById('upload-weights');
-	const model = await tfl.loadModel(tf.io.browserFiles(
- 		[uploadJSONInput.files[0], uploadWeightsInput.files[0]]));
-	*/ 
+async function cargar_modelo_bugcat(){
+	const uploadJSONInput = $('#json_bugcat');
+	const uploadWeightsInput = $('#h5_bugcat');
+
+	let lista_archivos = []
+	uploadWeightsInput.prop('files').forEach(function(element){
+		lista_archivos.push(element)
+	});
+
+	model_varios = await tf.loadLayersModel(
+		tf.io.browserFiles(
+			[uploadJSONInput.prop('files')[0]].concat(lista_archivos)
+			)
+		);
+	model_varios.summary();
+}
+async function cargar_modelo_pix2pix(){
+	const uploadJSONInput = $('#json_pix2pix');
+	const uploadWeightsInput = $('#h5_pix2pix');
+
+	let lista_archivos = []
+	uploadWeightsInput.prop('files').forEach(function(element){
+		lista_archivos.push(element)
+	});
+
+	model_pix2pix = await tf.loadLayersModel(
+		tf.io.browserFiles(
+			[uploadJSONInput.prop('files')[0]].concat(lista_archivos)
+			)
+		);
+	model_pix2pix.summary();
 }
 
 // Espera 1 segundo
@@ -187,7 +235,5 @@ function esperar_segundo() {
 async function asyncCall() {
 	$("#palanca").attr("src","img/Palanca2.png");
   const result = await esperar_segundo();
-	vector = generar_aleatorios();
   $("#palanca").attr("src","img/Palanca1.png");
-	return vector;
 }

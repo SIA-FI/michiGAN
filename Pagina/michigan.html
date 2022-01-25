@@ -19,16 +19,16 @@
 		<!-- Primera parte de la pantalla -->
 		<!-- Portada -->
 		<div class="row d-flex justify-content-between px-2">
-			<div class="col-12 col-lg-2 my-2 d-flex align-items-center rosa-siafi">
+			<div class="col-12 col-lg-2 my-2 d-flex align-items-center rosa-siafi border borde-siafi">
 				<img class="imagenes-principio" src="img/logoMichiGAN.png">
 			</div>
-			<div class="col-12 col-lg-9 my-2 p-0 d-flex align-items-center rosa-siafi">
+			<div class="col-12 col-lg-9 my-2 p-0 d-flex align-items-center rosa-siafi borde-siafi">
 				<img class="imagenes-principio" src="img/banner.jpg"> 
 			</div>
 		</div>
 		<!-- Creditos y explicación -->
 		<div class="row d-flex justify-content-between px-2">
-			<div class="col-12 col-lg-2 my-2 p-3 rosa-siafi">
+			<div class="col-12 col-lg-2 my-2 p-3 rosa-siafi borde-siafi">
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item">Garcia Mejia Luis Leobardo</li>
 					<li class="list-group-item">Garcia Olvera Emiliano</li>
@@ -37,7 +37,7 @@
 					<li class="list-group-item">Link a Github</li>
 				</ul>
 			</div>
-			<div class="col-12 col-lg-9 my-2 p-4 introduccion d-flex align-items-center rosa-siafi">
+			<div class="col-12 col-lg-9 my-2 p-4 introduccion d-flex align-items-center rosa-siafi borde-siafi">
 				<p class="text-justify">MichiGAN es un proyecto de SIAFI, el cual busca utilizar inteligencia artificial, específicamente un tipo especial de redes neuronales denominadas <b>GANs</b>, para crear un generador de ilustraciones de gatos.
 					La idea de una GAN puede ser vista de una manera simple
 					Hacer que redes neuronales compitan una con otra con la finalidad de que mejoren mutuamente. Así una GAN está compuesta de dos redes neuronales:
@@ -52,10 +52,33 @@
 			</div>
 		</div>
 
+		<!-- Subir archivos de pesos y configuración -->
+		<div class="row px-2">
+			<div class="col-9 my-2 p-2 rosa-siafi borde-siafi">
+				<div class="row m-2 mt-3">
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" id="json_bugcat" lang="es">
+						<label class="custom-file-label" for="json_bugcat">Subir json de bugcat</label>
+					</div>
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" id="h5_bugcat" lang="es" multiple>
+						<label class="custom-file-label" for="h5_bugcat">Subir pesos de bugcat</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-3 my-2 p-2 rosa-siafi borde-siafi">
+				<div class="row d-flex justify-content-center m-2 h-100">
+					<div class="centrar-vertical">
+						<button type="button" class="btn btn-lg red m-2 mt-3" id="cargar_bugcat">CARGAR</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<!-- Segunda parte de la pantalla -->
 		<div class="row px-2">
 			<!-- Primer Columna -->
-			<div class="col-2 my-2 p-2 rosa-siafi">
+			<div class="col-2 my-2 p-2 rosa-siafi borde-siafi">
 				<div class="row d-flex justify-content-center m-2 h-100">
 					<div class="centrar-vertical-space">
 						<button type="button" class="btn btn-lg red m-2" id="generar_varios">GENERAR</button>
@@ -96,7 +119,7 @@
 				</div>
 			</div>
 			<!-- Segunda Columna -->
-			<div class="col-8 my-2 p-2 rosa-siafi">
+			<div class="col-8 my-2 p-2 rosa-siafi borde-siafi">
 				<div class="row my-personalizado m-2 mt-3">
 					<div class="col-4 p-0">
 						<input type="number" class="form-control" id="number_1">
@@ -119,11 +142,11 @@
 				</div>
 
 				<div class="row d-flex justify-content-center m-2">
-					<img class="resultado" src="img/logoMichiGAN.png">
+					<canvas id="canva_varios"></canvas>
 				</div>
 			</div>
 			<!-- Tercera Columna -->
-			<div class="col-2 my-2 p-2 rosa-siafi">
+			<div class="col-2 my-2 p-2 rosa-siafi borde-siafi">
 				<div class="row d-flex justify-content-center m-2 h-100">
 					<div class="centrar-vertical-space">
 						<img class="palanca" src="img/Palanca1.png" id="palanca">
@@ -133,10 +156,33 @@
 			</div>
 		</div>
 
+		<!-- Subir archivos de pesos y configuración -->
+		<div class="row px-2">
+			<div class="col-9 my-2 p-2 rosa-siafi borde-siafi">
+				<div class="row m-2 mt-3">
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" id="json_pix2pix" lang="es">
+						<label class="custom-file-label" for="json_pix2pix">Subir json de pix2pix</label>
+					</div>
+					<div class="custom-file">
+						<input type="file" class="custom-file-input" id="h5_pix2pix" lang="es" multiple>
+						<label class="custom-file-label" for="h5_pix2pix">Subir pesos de pix2pix</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-3 my-2 p-2 rosa-siafi borde-siafi">
+				<div class="row d-flex justify-content-center m-2 h-100">
+					<div class="centrar-vertical">
+						<button type="button" class="btn btn-lg red m-2 mt-3" id="cargar_pix2pix">CARGAR</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<!-- Tercera parte de la pantalla -->
 		<div class="row px-2">
 			<!-- Primer Columna -->
-			<div class="col-9 my-2 p-2 rosa-siafi">
+			<div class="col-9 my-2 p-2 rosa-siafi borde-siafi">
 				<div class="row m-2 mt-3">
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" id="input_pix2pix" lang="es">
@@ -144,11 +190,11 @@
 					</div>
 				</div>
 				<div class="row d-flex justify-content-center m-2">
-					<img class="resultado" src="img/logoMichiGAN.png" id="output_pix2pix">
+					<canvas id="canva_pix2pix"></canvas>
 				</div>
 			</div>
 			<!-- Segunda Columna -->
-			<div class="col-3 my-2 p-2 rosa-siafi">
+			<div class="col-3 my-2 p-2 rosa-siafi borde-siafi">
 				<div class="row d-flex justify-content-center m-2 h-100">
 					<div class="centrar-vertical">
 						<button type="button" class="btn btn-lg red m-2" id="generar_pix2pix">GENERAR</button>
