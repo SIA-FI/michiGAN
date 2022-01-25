@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+.introduccion p{
+	font-family: 'Open Sans', cursive;
+	color: rgb(110, 0, 0);
+}
+.red{
+	background-color: rgb(255, 56, 106);
+	color: black;
+}
+.my-personalizado{
+	margin-top: 12px;
+}
+.centrar-vertical{
+	display: flex; 
+	flex-direction: column; 
+	justify-content: space-between;
+	align-items: center;
+}
+.centrar-vertical-space{
+	display: flex; 
+	flex-direction: column; 
+	justify-content: space-around;
+	align-items: center;
+}
+.rosa-siafi{
+	background-color: pink;
+}
+.imagenes-principio{
+	width: 100%; 
+	height: auto;
+}
+.resultado{
+	width: 50%; 
+	height: auto;
+}
+.palanca{
+	width: 50%; 
+	height: auto;
+}

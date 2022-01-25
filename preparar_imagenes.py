@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 # Cambiar esta URL
-url_git = "C:/Users/Usuario/Documents/SIAFI/GANs/git/michiGAN"
+url_git = "D:\Documentos\GitHub\michiGAN"
 
 # 
 carpetas = os.listdir(os.path.join(url_git,"imagenes"))
