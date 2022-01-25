@@ -58,7 +58,10 @@ $(document).ready(function(){
 
 	$("#guardar_varios").on("click",function(){
 		if(varios_generado){
-			alert("Guardando gatito varios");
+			var link = document.createElement('a');
+			link.download = 'sticker_MichiGAN.png';
+			link.href = document.getElementById('canva_varios').toDataURL()
+			link.click();
 		}else{
 			alert("No se ha generado un gatito :c")
 		}
